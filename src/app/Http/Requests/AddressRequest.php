@@ -23,6 +23,14 @@ class AddressRequest extends FormRequest
      */
     public function rules()
     {
+        if ($this->route()->getName() === 'purchase.address.update') {
+            return [
+                'postal_code' => 'required|string|size:8|regex:/^\d{3}-\d{4}$/',
+                'address' => 'required|string|max:255',
+                'building' => 'required|string|max:255',
+            ];
+        }
+
         return [
             'name' => 'required|string|max:255',
             'postal_code' => 'required|string|size:8|regex:/^\d{3}-\d{4}$/',

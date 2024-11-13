@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
   <link rel="stylesheet" href="{{ asset('css/common.css') }}">
   @yield('css')
+  @livewireStyles
 </head>
 
 <body>
@@ -20,13 +21,16 @@
           <ul class="header-nav">
             @if (Auth::check())
               <li class="header-nav__item">
-                <a class="header-nav__link" href="/mypage">マイページ</a>
+                <livewire:search-input />
               </li>
               <li class="header-nav__item">
                 <form action="/logout" method="post">
                   @csrf
                   <button class="header-nav__button">ログアウト</button>
                 </form>
+              </li>
+              <li class="header-nav__item">
+                <a class="header-nav__link" href="/mypage">マイページ</a>
               </li>
             @endif
           </ul>
@@ -38,6 +42,7 @@
   <main>
     @yield('content')
   </main>
+  @livewireScripts
 </body>
 
 </html>
