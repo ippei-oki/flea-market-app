@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
+    public function show()
+    {
+        $user = Auth::user();
+        return view('mypage', compact('user'));
+    }
+
     public function edit()
     {
         return view('profile.edit');

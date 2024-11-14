@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\SellController;
 use App\Http\Controllers\Auth\CustomLoginController;
 use App\Http\Controllers\Auth\CustomRegisterController;
 use App\Http\Livewire\PurchaseComponent;
@@ -21,6 +22,7 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {
+    Route::get('/mypage', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::post('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::post('/purchase/confirm/{item_id}', [PurchaseController::class, 'confirmPurchase'])->name('purchase.confirm');
@@ -29,4 +31,6 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/purchase/details/{item_id}', [PurchaseController::class, 'purchase'])->name('purchase.details');
     Route::get('/purchase/address/{item_id}', [AddressController::class, 'edit'])->name('purchase.address');
     Route::post('/purchase/address/{item_id}', [AddressController::class, 'update'])->name('purchase.address.update');
+    Route::get('/sell', [SellController::class, 'create'])->name('sell.create');
+    Route::post('/sell', [SellController::class, 'store'])->name('sell.store');
 });

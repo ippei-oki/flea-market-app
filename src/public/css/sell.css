@@ -1,0 +1,131 @@
+.sell-info {
+    width: 50%;
+    margin: 30px auto;
+}
+
+.title {
+    text-align: center;
+}
+
+.item-image__area {
+    width: 100%;
+    height: 100px;
+    border: dotted 1px black;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.item-image__char {
+    margin: 0;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+.custom-file-label {
+    cursor: pointer;
+    padding: 8px 12px;
+    background-color: white;
+    color: #FF5555;
+    border: solid 2px #FF5555;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    height: 40px;
+}
+
+.form__error {
+    height: 20px;
+    color: #FF5655;
+    text-align: left;
+}
+
+.sub-title-1 {
+    border-bottom: solid 1px black;
+    margin-bottom: 30px;
+}
+
+.sub-title-1__char {
+    font-size: 20px;
+    margin: 0;
+}
+
+.item-categories {
+    margin-bottom: 30px;
+}
+
+.char-bold {
+    font-weight: bold;
+    margin: 0;
+}
+
+.tag {
+    display: inline-block;
+    padding: 5px 12px;
+    margin: 7px;
+    border: 2px solid #FF5655;
+    border-radius: 100vh;
+    color: #FF5655;
+    cursor: pointer;
+}
+
+.tag.selected {
+    background-color: #FF5655;
+    color: white;
+    border-color: #FF5655;
+}
+
+.item-condition {
+    margin-bottom: 50px;
+}
+
+.select-condition {
+    width: 100%;
+    padding: 5px;
+}
+
+.item-name {
+    margin-bottom: 30px;
+}
+
+.item-name__input {
+    width: 100%;
+    height: 30px;
+}
+
+.item-description {
+    margin-bottom: 30px;
+}
+
+.item-description__input {
+    width: 100%;
+    height: 90px;
+}
+
+.item-price {
+    margin-bottom: 100px;
+}
+
+.item-price__input {
+    width: 100%;
+    height: 30px;
+}
+
+.btn-exhibit {
+    padding: 10px;
+    margin-bottom: 50px;
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 3px;
+    background: #FF5555;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+}
