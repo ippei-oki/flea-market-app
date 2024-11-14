@@ -48,4 +48,14 @@ class Item extends Model
     {
         return $this->belongsToMany(User::class, 'purchases');
     }
+
+    public function purchase()
+    {
+        return $this->hasOne(Purchase::class, 'item_id');
+    }
+
+    public function isSold()
+    {
+        return $this->purchase()->exists();
+    }
 }

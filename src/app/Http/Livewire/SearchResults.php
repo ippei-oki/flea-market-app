@@ -13,15 +13,27 @@ class SearchResults extends Component
 
     public function mount()
     {
-        $this->items = Item::all();
+        $this->items = Item::with('purchase')->get()->map(function ($item) {
+            $item->is_sold = $item->purchase()->exists();
+            return $item;
+        });
     }
 
     public function updateResults($search)
     {
         if (empty($search)) {
-            $this->items = Item::all();
+            $this->items = Item::with('purchase')->get()->map(function ($item) {
+                $item->is_sold = $item->purchase()->exists();
+                return $item;
+            });
         } else {
-            $this->items = Item::where('name', 'like', '%' . $search . '%')->get();
+            $this->items = Item::with('purchase')
+                ->where('name', 'like', '%' . $search . '%')
+                ->get()
+                ->map(function ($item) {
+                    $item->is_sold = $item->purchase()->exists();
+                    return $item;
+                });
         }
     }
 
