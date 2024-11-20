@@ -56,7 +56,7 @@
         @livewire('subtotal', ['item' => $item])
       </div>
       <div>
-        @livewire('purchase-button-component', ['item' => $item])
+        @livewire('purchase-stripe-button', ['item' => $item])
       </div>
     </div>
   </div>
