@@ -1,12 +1,12 @@
-# 飲食店予約システム
-メールアドレスとパスワードでログインし、飲食店の検索・予約を行う
-![image](https://github.com/user-attachments/assets/ef9bf508-d56e-48bb-8607-0df27f72194f)
+# coachtechフリマ
+フリマアプリ
+![image](https://github.com/user-attachments/assets/a3764021-ffa7-40b0-8932-9e8ee469efed)
 
 ## 作成した目的
-顧客の利便性向上及び集客力向上
+アイテムの出品と購入を行うためのフリマアプリを開発する
 
 ## アプリケーションURL
-https://github.com/ippei-oki/advanced-mock-case
+https://github.com/ippei-oki/flea-market-app
 
 ## 機能一覧
 ・会員登録 ・ログイン ・ログアウト ・ユーザー情報取得 ・ユーザー飲食店お気に入り一覧取得
