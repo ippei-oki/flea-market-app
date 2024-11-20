@@ -5,10 +5,16 @@
 @endsection
 
 @section('content')
-  <div class="display-items">
-    <p class="list-select">おすすめ</p>
-    <p class="list-select">マイリスト</p>
-  </div>
+  <div>
+    <a href="{{ url('items?filter=recommend') }}" 
+       class="{{ request('filter') === 'recommend' ? 'active-tab' : 'inactive-tab' }}">
+        おすすめ
+    </a>
 
-  <livewire:search-results />
+    <a href="{{ url('items?filter=mylist') }}" 
+       class="{{ request('filter') === 'mylist' ? 'active-tab' : 'inactive-tab' }}">
+        マイリスト
+    </a>
+  </div>
+  <livewire:search-results :filter="$filter ?? ''" />
 @endsection

@@ -51,11 +51,16 @@ class Item extends Model
 
     public function purchase()
     {
-        return $this->hasOne(Purchase::class, 'item_id');
+        return $this->hasOne(Purchase::class);
     }
 
     public function isSold()
     {
         return $this->purchase()->exists();
+    }
+
+    public function sell()
+    {
+        return $this->hasOne(Sell::class);
     }
 }

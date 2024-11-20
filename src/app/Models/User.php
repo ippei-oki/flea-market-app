@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -49,7 +49,7 @@ class User extends Authenticatable
 
     public function likes()
     {
-        return $this->belongsToMany(Item::class);
+        return $this->hasMany(Like::class);
     }
 
     public function comments()
@@ -64,6 +64,18 @@ class User extends Authenticatable
 
     public function purchases()
     {
-        return $this->belongsToMany(Item::class, 'purchases');
+        return $this->belongsToMany(Item::class, 'purchases', 'user_id', 'item_id');
+    }
+
+    public function sells()
+    {
+        return $this->hasMany(Sell::class);
+    }
+
+    public function getProfileImageUrlAttribute()
+    {
+        return $this->profile_image 
+            ? asset('storage/profile_images/' . $this->profile_image)
+            : asset('images/default_profile.png');
     }
 }

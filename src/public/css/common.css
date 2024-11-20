@@ -26,14 +26,24 @@
     justify-content: space-between;
 }
 
-.search-container {
-    display: inline-block;
-    margin-right: 1rem;
+.search-input {
+    padding: 3px 10px;
+    width: 250px;
+    height: 40px;
 }
 
 .header-nav__link {
     color: #fff;
     text-decoration: none;
+    margin: 0 20px;
+}
+
+.header-nav__link--sell {
+    background-color: white;
+    color: black;
+    border-radius: 3px;
+    text-decoration: none;
+    padding: 3px 10px;
 }
 
 .header-nav__button {

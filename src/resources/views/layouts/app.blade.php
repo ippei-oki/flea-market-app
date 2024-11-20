@@ -17,12 +17,12 @@
     <div class="header__inner">
       <div class="header-utilities">
         <img class="header__logo" src="{{asset('storage/logo.svg')}}">
-        <nav>
-          <ul class="header-nav">
-            @if (Auth::check())
-              <li class="header-nav__item">
-                <livewire:search-input />
-              </li>
+        @if (Auth::check())
+          <div class="header-nav__item">
+            <livewire:search-input />
+          </div>
+          <nav>
+            <ul class="header-nav">
               <li class="header-nav__item">
                 <form action="/logout" method="post">
                   @csrf
@@ -33,11 +33,11 @@
                 <a class="header-nav__link" href="/mypage">マイページ</a>
               </li>
               <li class="header-nav__item">
-                <a class="header-nav__link" href="/sell">出品</a>
+                <a class="header-nav__link--sell" href="/sell">出品</a>
               </li>
-            @endif
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        @endif
       </div>
     </div>
   </header>

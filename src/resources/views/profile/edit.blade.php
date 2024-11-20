@@ -12,7 +12,7 @@
         <div class="form-group__img">
 
             <div class="profile-image-container" id="profileImagePreview"
-                 style="background-image: url('{{ old('profile_image', auth()->user()->profile_image_url ?? '') }}');">
+                style="background-image: url('{{ old('profile_image', auth()->user()->profile_image_url) }}');">
             </div>
 
             <input type="file" name="profile_image" id="profileImageInput" class="hidden">
