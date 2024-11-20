@@ -7,6 +7,7 @@ use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\SellController;
+use App\Http\Controllers\StripeController;
 use App\Http\Controllers\Auth\CustomLoginController;
 use App\Http\Controllers\Auth\CustomRegisterController;
 use App\Http\Livewire\PurchaseComponent;
@@ -39,6 +40,8 @@ Route::group(['middleware' => ['web', 'auth', 'verified']], function () {
     Route::get('/purchase/details/{item_id}', [PurchaseController::class, 'purchase'])->name('purchase.details');
     Route::get('/purchase/address/{item_id}', [AddressController::class, 'edit'])->name('purchase.address');
     Route::post('/purchase/address/{item_id}', [AddressController::class, 'update'])->name('purchase.address.update');
+    Route::post('/purchase/stripe/session', [StripeController::class, 'createSession'])->name('purchase.stripe.session');
+    Route::get('/purchase/success/{item_id}', [StripeController::class, 'success'])->name('purchase.stripe.success');
     Route::get('/sell', [SellController::class, 'create'])->name('sell.create');
     Route::post('/sell', [SellController::class, 'store'])->name('sell.store');
 });
