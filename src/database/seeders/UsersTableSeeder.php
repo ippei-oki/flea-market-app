@@ -17,6 +17,7 @@ class UsersTableSeeder extends Seeder
         $param = [
             'name' => '山田太郎',
             'email' => 'aaa@example.com',
+            'email_verified_at' => '2024-09-21 15:56:40',
             'password' => bcrypt('99999999'),
             'postal_code' => '123-4567',
             'address' => '東京都',
@@ -30,6 +31,7 @@ class UsersTableSeeder extends Seeder
         $param = [
             'name' => '山田次郎',
             'email' => 'bbb@example.com',
+            'email_verified_at' => '2024-09-21 15:56:40',
             'password' => bcrypt('99999999'),
             'postal_code' => '234-5678',
             'address' => '大阪府',

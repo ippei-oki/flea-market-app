@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AddressRequest;
 use App\Http\Requests\ProfileRequest;
+use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -11,7 +12,11 @@ class ProfileController extends Controller
     public function show()
     {
         $user = Auth::user();
-        return view('mypage', compact('user'));
+        $tab = 'sell';
+
+        $sellItems = Item::where('user_id', $user->id)->get();
+
+        return view('mypage', compact('user', 'sellItems', 'tab'));
     }
 
     public function edit()
@@ -37,5 +42,19 @@ class ProfileController extends Controller
         $user->save();
 
         return redirect()->route('home');
+    }
+
+    public function showSellItems()
+    {
+        $user = auth()->user();
+        $sellItems = Item::where('user_id', $user->id)->get();
+        return view('mypage', compact('user', 'sellItems'))->with('tab', 'sell');
+    }
+
+    public function showPurchasedItems()
+    {
+        $user = auth()->user();
+        $purchasedItems = Item::whereIn('id', $user->purchases->pluck('id'))->get();
+        return view('mypage', compact('user', 'purchasedItems'))->with('tab', 'purchase');
     }
 }

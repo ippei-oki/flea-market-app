@@ -7,6 +7,7 @@ use App\Http\Requests\ExhibitionRequest;
 use App\Models\Item;
 use App\Models\Category;
 use App\Models\Condition;
+use App\Models\Sell;
 
 class SellController extends Controller
 {
@@ -39,6 +40,11 @@ class SellController extends Controller
         foreach ($request->selectedCategories as $categoryId) {
             $item->categories()->attach($categoryId);
         }
+
+        Sell::create([
+            'user_id' => auth()->id(),
+            'item_id' => $item->id,
+        ]);
 
         return redirect()->route('home')->with('success', '商品を出品しました');
     }

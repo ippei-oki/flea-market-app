@@ -16,7 +16,6 @@ class CustomRegisterController extends Controller
 
     public function register(RegisterRequest $request)
     {
-
         $user = (new CreateNewUser())->create($request->all());
 
         auth()->login($user);

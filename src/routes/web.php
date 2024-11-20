@@ -10,6 +10,7 @@ use App\Http\Controllers\SellController;
 use App\Http\Controllers\Auth\CustomLoginController;
 use App\Http\Controllers\Auth\CustomRegisterController;
 use App\Http\Livewire\PurchaseComponent;
+use App\Http\Livewire\SearchResults;
 
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', [ItemController::class, 'index'])->name('home');
@@ -19,12 +20,19 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/register', [CustomRegisterController::class, 'register']);
     Route::post('/logout', [CustomLoginController::class, 'logout'])->name('logout');
     Route::get('/item/{item_id}', [ItemController::class, 'detail'])->name('item.detail');
+    Route::get('/items', SearchResults::class)->name('items.index');
 });
 
-Route::group(['middleware' => ['web', 'auth']], function () {
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+Route::group(['middleware' => ['web', 'auth', 'verified']], function () {
     Route::get('/mypage', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::post('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/mypage/sell', [ProfileController::class, 'showSellItems'])->name('mypage.sell');
+    Route::get('/mypage/purchase', [ProfileController::class, 'showPurchasedItems'])->name('mypage.purchase');
     Route::post('/purchase/confirm/{item_id}', [PurchaseController::class, 'confirmPurchase'])->name('purchase.confirm');
     Route::post('/item/{item_id}/comment', [CommentController::class, 'store'])->name('comment.store');
     Route::get('/purchase/{item}', PurchaseComponent::class)->name('purchase.component');
