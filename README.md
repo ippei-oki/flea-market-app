@@ -9,12 +9,8 @@
 https://github.com/ippei-oki/flea-market-app
 
 ## 機能一覧
-・会員登録 ・ログイン ・ログアウト ・ユーザー情報取得 ・ユーザー飲食店お気に入り一覧取得
-・ユーザー飲食店予約情報取得 ・飲食店一覧取得 ・飲食店詳細取得 ・飲食店お気に入り追加
-・飲食店お気に入り削除 ・飲食店予約情報追加 ・飲食店予約情報削除 ・エリアで検索する
-・ジャンルで検索する ・店名で検索する　・予約変更機能　・評価機能　・バリデーション
-・レスポンシブデザイン　・管理画面　・ストレージ　・認証　・メール送信　・リマインダー
-・QRコード　・決済機能
+・会員登録 ・ログイン ・ログアウト ・商品一覧取得　・商品詳細取得　・商品購入
+・プロフィール　・商品出品
 
 ## 使用技術（実行環境）
 ・Laravel 8.83.27　・NGINX 1.21.1　・PHP 8.3.7　・MySQL 8.0.26
@@ -23,11 +19,11 @@ https://github.com/ippei-oki/flea-market-app
 ![image](https://github.com/user-attachments/assets/c780771b-5865-4e1c-9501-348bb8c16bcb)
 
 ## ER図
-![image](https://github.com/user-attachments/assets/d2a00a07-0b75-44cf-90ae-9b7b139c281a)
+![image](https://github.com/user-attachments/assets/9cbaddbc-6c18-404b-9c6b-9b9eba3b6313)
 
 ## 環境構築
 **Dockerビルド**
-1. `git clone git@github.com/ippei-oki/advanced-mock-case.git`
+1. `git clone git@github.com/ippei-oki/flea-market-app.git`
 2. DockerDesktopアプリを立ち上げる
 3. `docker-compose up -d --build`
 
@@ -56,9 +52,36 @@ php artisan migrate
 ``` bash
 php artisan db:seed
 ```
+8. シンボリックリンクの作成
+``` bash
+php artisan storage:link
+```
+9. mailtrapの設定
+mailtrapへ登録  
+.envに以下の環境変数を追加
+``` text
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=your_mailtrap_username
+MAIL_PASSWORD=your_mailtrap_password
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=no-reply@example.com
+MAIL_FROM_NAME="Your App Name"
+```
+10. stripeの設定
+stripeへ登録  
+.envに以下の環境変数を追加
+``` text
+STRIPE_SECRET=sk_test_**************************
+STRIPE_KEY=pk_test_**************************
+```
+テスト用カード番号  
+カード番号: 4242 4242 4242 4242  
+有効期限: 現在の月/年以降  
+CVC: 任意の3桁  
 
 **ダミーデータ**
-1. 管理者 email: aaa@example.com
-2. 店舗代表者 email: bbb@example.com
-3. 一般ユーザー email: ccc@example.com  
+1. 山田 太郎 email: aaa@example.com  
+2. 山田 次郎 email: bbb@example.com  
 パスワードは全て"99999999"
