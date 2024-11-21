@@ -20,7 +20,7 @@ https://github.com/ippei-oki/flea-market-app
 ・Laravel 8.83.27　・NGINX 1.21.1　・PHP 8.3.7　・MySQL 8.0.26
 
 ## テーブル設計
-![image](https://github.com/user-attachments/assets/e32997dd-ebc5-4e1d-850e-8a578b9cb9f1)
+![image](https://github.com/user-attachments/assets/c780771b-5865-4e1c-9501-348bb8c16bcb)
 
 ## ER図
 ![image](https://github.com/user-attachments/assets/d2a00a07-0b75-44cf-90ae-9b7b139c281a)
