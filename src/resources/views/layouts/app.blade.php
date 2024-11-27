@@ -17,7 +17,7 @@
     <div class="header__inner">
       <div class="header-utilities">
         <img class="header__logo" src="{{asset('storage/logo.svg')}}">
-        @if (Auth::check())
+        @if (!in_array(request()->path(), ['register', 'login']))
           <div class="header-nav__item">
             <livewire:search-input />
           </div>

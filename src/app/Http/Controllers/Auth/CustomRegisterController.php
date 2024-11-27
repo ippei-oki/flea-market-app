@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Actions\Fortify\CreateNewUser;
 use App\Http\Requests\RegisterRequest;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 
 class CustomRegisterController extends Controller
@@ -18,8 +19,10 @@ class CustomRegisterController extends Controller
     {
         $user = (new CreateNewUser())->create($request->all());
 
+        event(new Registered($user));
+
         auth()->login($user);
 
-        return redirect()->route('profile.edit');
+        return redirect()->route('verification.notice');
     }
 }
