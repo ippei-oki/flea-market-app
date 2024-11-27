@@ -56,7 +56,7 @@ php artisan db:seed
 ``` bash
 php artisan storage:link
 ```
-9. mailtrapの設定
+9. mailtrapの設定  
 mailtrapへ登録  
 .envに以下の環境変数を追加
 ``` text
@@ -69,7 +69,7 @@ MAIL_ENCRYPTION=null
 MAIL_FROM_ADDRESS=no-reply@example.com
 MAIL_FROM_NAME="Your App Name"
 ```
-10. stripeの設定
+10. stripeの設定  
 stripeへ登録  
 .envに以下の環境変数を追加
 ``` text
