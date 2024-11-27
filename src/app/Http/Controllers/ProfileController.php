@@ -41,7 +41,7 @@ class ProfileController extends Controller
         $user->profile_completed = true;
         $user->save();
 
-        return redirect()->route('home');
+        return redirect()->route('login.get');
     }
 
     public function showSellItems()

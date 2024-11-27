@@ -156,4 +156,5 @@ return [
     'render_on_redirect' => false,
 
     'debug' => true,
+    'devtools' => true,
 ];

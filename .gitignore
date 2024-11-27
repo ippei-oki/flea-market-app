@@ -1,2 +1,6 @@
 docker/mysql/data/*
 !.gitkeep
+
+# src/storage/app/public ディレクトリの追跡を許可
+!src/storage/app/public/
+!src/storage/app/public/**
