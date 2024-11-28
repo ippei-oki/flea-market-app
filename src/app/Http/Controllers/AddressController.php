@@ -25,7 +25,7 @@ class AddressController extends Controller
         $user->address = $request->address;
         $user->building = $request->building;
         if ($user->save()) {
-            return redirect()->route('purchase', ['item_id' => $item_id])
+            return redirect()->route('purchase.details', ['item_id' => $item_id])
                             ->with('success', '配送先住所が更新されました。');
         } else {
             return redirect()->back()->with('error', '住所の更新に失敗しました。');

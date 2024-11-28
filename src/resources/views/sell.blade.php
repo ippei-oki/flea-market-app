@@ -55,9 +55,9 @@
 
         <div class="item-description">
             <p class="char-bold">商品説明</p>
-            <textarea class="item-description__input" name="description"></textarea>
+            <textarea class="item-description__input" name="explanation"></textarea>
             <div class="form__error">
-                @error('description') <span>{{ $message }}</span> @enderror
+                @error('explanation') <span>{{ $message }}</span> @enderror
             </div>
         </div>
 
