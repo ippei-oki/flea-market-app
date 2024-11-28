@@ -47,8 +47,9 @@ class ProfileController extends Controller
     public function showSellItems()
     {
         $user = auth()->user();
+        $tab = 'sell';
         $sellItems = Item::where('user_id', $user->id)->get();
-        return view('mypage', compact('user', 'sellItems'))->with('tab', 'sell');
+        return view('mypage', compact('user', 'sellItems', 'tab'));
     }
 
     public function showPurchasedItems()

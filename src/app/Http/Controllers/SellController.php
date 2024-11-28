@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ExhibitionRequest;
 use App\Models\Item;
 use App\Models\Category;
@@ -22,23 +23,22 @@ class SellController extends Controller
     {
         $item = new Item();
         $item->name = $request->name;
-        $item->explanation = $request->description;
+        $item->explanation = $request->explanation;
         $item->price = $request->price;
         $item->condition_id = $request->condition;
         $item->user_id = auth()->id();
 
         if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $originalName = $file->getClientOriginalName();
-            $path = $file->storeAs('item_images', $originalName, 'public');
-
-            $item->image = $originalName;
+            $path = $request->file('image')->store('item_images', 'public');
+            $item->image = $path;
         }
 
         $item->save();
 
-        foreach ($request->selectedCategories as $categoryId) {
-            $item->categories()->attach($categoryId);
+        if ($request->filled('selectedCategories')) {
+            foreach ($request->selectedCategories as $categoryId) {
+                $item->categories()->attach($categoryId);
+            }
         }
 
         Sell::create([
