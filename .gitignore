@@ -1,6 +1,10 @@
+# MySQLのデータファイル
 docker/mysql/data/*
-!.gitkeep
+!docker/mysql/data/.gitkeep
 
-# src/storage/app/public ディレクトリの追跡を許可
-!src/storage/app/public/
-!src/storage/app/public/**
+# Storage関連
+/src/storage/*
+!/src/storage/app/public/
+!/src/storage/app/public/**
+/src/storage/debugbar/
+/src/storage/*.key
