@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
 class SearchResults extends Component
 {
@@ -16,7 +15,7 @@ class SearchResults extends Component
 
     protected $listeners = ['searchUpdated' => 'updateResults'];
 
-    public function mount()
+    public function mount($filter = null)
     {
         $this->filter = $this->filter ?? 'recommend';
         $this->loadItems();
@@ -31,7 +30,8 @@ class SearchResults extends Component
     {
         $query = $this->buildQuery($search);
         if ($query) {
-            $this->items = $query->get()->map(function ($item) {
+            $items = $query->get();
+            $this->items = $items->map(function ($item) {
                 $item->is_sold = $item->purchase !== null;
                 return $item;
             });
@@ -43,6 +43,7 @@ class SearchResults extends Component
     private function buildQuery($search = null)
     {
         $query = Item::query()->with('purchase');
+
         switch ($this->filter) {
             case 'recommend':
                 $query = $this->applyRecommendFilter($query);

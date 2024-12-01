@@ -16,5 +16,5 @@
         マイリスト
     </a>
   </div>
-  <livewire:search-results :filter="$filter ?? ''" />
+  <livewire:search-results :filter="request()->get('filter', 'recommend')" />
 @endsection
